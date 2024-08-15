@@ -1,0 +1,36 @@
+.desktopNav {
+    width: var(--desktop-nav-width);
+    background-color: var(--grey-100);
+    border-color: var(--grey-200);
+}
+
+.selectedNavItem {
+    background-color: var(--grey-200);
+    border-color: var(--grey-300);
+    border-width: 1px;
+    color: var(--neutral-contrast);
+}
+
+.navOverview {
+    background-color: var(--grey-200);
+    border-color: var(--grey-300);
+    border-width: 1px;
+    color: var(--neutral-contrast);
+}
+.navOverview > .navOverviewTitle {
+    background-color: #FCFF72;
+    border: 1px solid #D0D330;
+    color: #000;
+    border-radius: 62px;
+    height: 32px;
+}
+
+.mobileNav {
+    width: var(--desktop-nav-width);
+    background-color: var(--grey-100);
+    border-color: var(--grey-200);
+}
+
+.mobileNavButton {
+    border-color: rgba(54, 54, 57, 1);
+}

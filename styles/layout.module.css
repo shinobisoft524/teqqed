@@ -1,0 +1,16 @@
+.main {
+    background-color: #0D0D10;
+    color: white;
+    font-family: Inter;
+}
+
+@media (min-width: 640px) {
+    .desktopLayout {
+        padding-left: var(--desktop-nav-width);
+    }
+}
+
+.dashboardHeader {
+    border-color: var(--grey-200);
+    border-width: 0px 0px 1px 0px;
+}

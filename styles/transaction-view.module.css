@@ -1,0 +1,44 @@
+.container {
+  background-color: #141417;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dataTitleView {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.05);
+  border-width: 1px;
+}
+
+.paginationBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.transactionName {
+    width: 150px !important;
+}
+.activePagination {
+  display: flex;
+  background: radial-gradient(
+    circle at center,
+    rgba(252, 255, 114, 0) 0%,
+    #fcff7236 100%
+  );
+  border-color: rgba(226, 228, 105, 0.3);
+  border-width: 1px;
+}
+
+
+.activeMobilePagination {
+  color: white;
+  display: flex;
+}
+
+.scrollView {
+    overflow-x: auto;
+}
+
+.transactionMinWidth {
+    min-width: 650px !important;
+}

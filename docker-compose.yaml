@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  next-app:
+    container_name: next-app
+    build:
+      context: ./next-app
+      dockerfile: dev.Dockerfile
+
+    # Set environment variables directly in the docker-compose file
+    environment:
+       - DATABASE_URL="postgres://postgres:1234@db:5432/teqqed?sslmode=disable"
+
+    # Set environment variables based on the .env file
+    env_file:
+      - .env
+    volumes:
+      - ./next-app/src:/app/src
+      - ./next-app/public:/app/public
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - my_network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=teqqed
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+
+  # Add more containers below (nginx, postgres, etc.)
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  my_network:
+    external: true
