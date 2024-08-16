@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client';
+let { PrismaClient } = require('@prisma/client');
+let prisma = new PrismaClient();
 
-const prisma: any = new PrismaClient();
-
-const userData = [
+let userData = [
   {
     name: 'administrator',
     email: 'admin@teqqed.com',
@@ -15,16 +14,16 @@ const userData = [
   }
 ];
 
-function getRandomArbitrary(min: number, max: number) {
+function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function getRandomInt(max: number) {
+function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
 function generateRandomName() {
-  const firstNames = [
+  let firstNames = [
     'James',
     'Oliver',
     'Emma',
@@ -36,7 +35,7 @@ function generateRandomName() {
     'Lucas',
     'Amelia'
   ];
-  const lastNames = [
+  let lastNames = [
     'Smith',
     'Johnson',
     'Brown',
@@ -49,40 +48,37 @@ function generateRandomName() {
     'Martin'
   ];
 
-  const randomFirstName = firstNames[getRandomInt(firstNames.length)];
-  const randomLastName = lastNames[getRandomInt(lastNames.length)];
+  let randomFirstName = firstNames[getRandomInt(firstNames.length)];
+  let randomLastName = lastNames[getRandomInt(lastNames.length)];
 
   return `${randomFirstName} ${randomLastName}`;
 }
 
-const statusItems = ['Active', 'Cancelled', 'Pending', 'Completed'];
-const methodItems = ['BTC', 'SOLANA'];
+let statusItems = ['Active', 'Cancelled', 'Pending', 'Completed'];
+let methodItems = ['BTC', 'SOLANA'];
 
-function getRandomItem(array: string | any[]) {
-  const randomIndex = Math.floor(Math.random() * array.length);
+function getRandomItem(array) {
+  let randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 }
 
 async function main() {
-  console.log(`Start seeding ...`);
-  for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u
+  for (let i = 0; i < userData.length; i++) {
+    await prisma.user.create({
+      data: userData[i]
     });
-    console.log(`Created user with id: ${user.id}`);
   }
 
-  for (var i = 0; i < 100; i++) {
-    const transaction = {
+  for (let i = 0; i < 100; i++) {
+    let _transaction = {
       amount: getRandomArbitrary(3000, 15000),
       name: generateRandomName(),
       status: getRandomItem(statusItems),
       method: getRandomItem(methodItems)
     };
-    const user = await prisma.Transaction.create({
-      data: transaction
+    await prisma.Transaction.create({
+      data: _transaction
     });
-    console.log(`Created transaction with id: ${user.id}`);
   }
 
   console.log(`Seeding finished.`);
