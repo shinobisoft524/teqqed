@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import prisma from '@/server/db';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  trustHost: true,
   providers: [
     // GitHub
     CredentialsProvider({
