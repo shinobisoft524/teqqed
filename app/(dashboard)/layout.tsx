@@ -70,19 +70,19 @@ function DesktopNav() {
         </Link>
         <NavOverview href="/" label="Dashboard" title="Dashboard" />
 
-        <NavItem href="/" label="Dashboard">
+        <NavItem href="/a" label="Dashboard">
           <Home className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/" label="My proxies">
+        <NavItem href="/b" label="My proxies">
           <ShoppingCart className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/" label="Top up balance">
+        <NavItem href="/c" label="Top up balance">
           <Package className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/customers" label="Transactions">
+        <NavItem href="/d" label="Transactions">
           <Users2 className="h-5 w-5" />
         </NavItem>
       </nav>
