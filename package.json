@@ -2,10 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate & next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
@@ -13,7 +12,11 @@
     "db:browse": "prisma studio",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
-    "db:seed": "ts-node --transpile-only prisma/seed.js"
+    "db:seed": "ts-node --transpile-only prisma/seed.js",
+
+    "docker:db": "docker-compose up -d db",
+    "docker:start": "docker-compose up --build",
+    "deploy:local": "npm run docker:start"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",

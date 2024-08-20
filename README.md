@@ -1,3 +1,4 @@
 # run
-docker-compose up --build
+yarn deploy:local
+npm run deploy:local
 

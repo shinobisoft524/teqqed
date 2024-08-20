@@ -6,11 +6,15 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://postgres:1234@db:5432/teqqed
+      - DATABASE_URL=postgresql://postgres:1234@db:5432/teqqed?schema=public
+      - POSTGRES_URL=postgresql://postgres:1234@db:5432/teqqed?schema=public
+      - POSTGRES_URL_NON_POOLING=postgresql://postgres:1234@db:5432/teqqed?schema=public
     depends_on:
       - db
     volumes:
       - .:/app
+    networks:
+      - teqqed
     command: npm run dev # Use "npm start" if you want to run in production mode
 
   db:
@@ -21,6 +25,14 @@ services:
       POSTGRES_DB: teqqed
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - teqqed
 
 volumes:
   postgres_data:
+
+networks:
+  teqqed:
+    driver: bridge 

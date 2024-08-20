@@ -8,16 +8,21 @@ WORKDIR /app
 COPY package*.json ./
 COPY ./prisma/schema.prisma ./
 
+# RUN npm install --global yarn
 # Install dependencies
-RUN npm install --legacy-peer-deps
+RUN yarn
 
 # Copy the rest of the application code
 COPY . .
 
-# Build the Next.js application
-RUN npm run build
+# RUN rm -rf node_modules/.prisma
+RUN npx prisma generate
 
-RUN npm run db:seed
+# Build the Next.js application
+RUN yarn build
+
+# RUN npm run db:push
+# RUN npm run db:seed
 
 # Stage 2: Serve the built application using a minimal Node.js image
 FROM node:18-alpine
@@ -34,6 +39,7 @@ COPY --from=builder /app/next.config.js ./
 # Install production dependencies
 # RUN npm install --legacy-peer-deps 
 # --omit=dev
+RUN yarn
 
 # Expose the port the app runs on
 EXPOSE 3000
