@@ -6,9 +6,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://postgres:1234@db:5432/teqqed?schema=public
-      - POSTGRES_URL=postgresql://postgres:1234@db:5432/teqqed?schema=public
-      - POSTGRES_URL_NON_POOLING=postgresql://postgres:1234@db:5432/teqqed?schema=public
+      #- DATABASE_URL=postgresql://postgres:1234@db:5432/teqqed?schema=public
+      #- POSTGRES_URL=postgresql://postgres:1234@db:5432/teqqed?schema=public
+      #- POSTGRES_URL_NON_POOLING=postgresql://postgres:1234@db:5432/teqqed?schema=public
+
+      - DATABASE_URL=postgresql://teqqed_owner:************@ep-calm-fire-a2d7wcod.eu-central-1.aws.neon.tech/teqqed?sslmode=require
+      - POSTGRES_URL=postgresql://teqqed_owner:************@ep-calm-fire-a2d7wcod.eu-central-1.aws.neon.tech/teqqed?sslmode=require
+      - POSTGRES_URL_NON_POOLING=postgresql://teqqed_owner:************@ep-calm-fire-a2d7wcod.eu-central-1.aws.neon.tech/teqqed?sslmode=require
       - AUTH_SECRET=aac48e16a8633b2c60a5632aabdc7124
     depends_on:
       - db
