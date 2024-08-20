@@ -1,4 +1,4 @@
 # run
-yarn deploy:local
-npm run deploy:local
+yarn deploy
+npm run deploy
 
